@@ -1,0 +1,222 @@
+:root {
+    --bg-color: #050505;
+    --text-color: #f5f5f7;
+    --accent-color: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Clash Display', sans-serif;
+    overflow-x: hidden;
+    /* Hide scrollbar for cleaner look, lenis handles it well */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar { 
+    display: none;
+}
+
+#hero-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.5; /* Dimming to make text stand out */
+}
+
+/* Wrapper above canvas */
+.content-wrapper {
+    position: relative;
+    z-index: 10; 
+}
+
+/* Sections */
+.slide-section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10%;
+    position: relative;
+}
+
+/* Typography styles */
+.section-title {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 600;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Hero Section */
+.hero {
+    align-items: center;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    text-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+}
+
+.hero-subtitle {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-weight: 400;
+    opacity: 0.7;
+    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+    letter-spacing: 0.05em;
+}
+
+/* About Section */
+.about {
+    align-items: flex-start;
+}
+
+.about-text {
+    font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+    font-weight: 500;
+    line-height: 1.4;
+    max-width: 1200px;
+    text-shadow: 0 5px 30px rgba(0, 0, 0, 0.9);
+}
+
+/* Experience Section */
+.experience {
+    align-items: flex-end;
+    text-align: right;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    max-width: 600px;
+}
+
+.timeline-item {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2.5rem;
+    border-radius: 16px;
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1), background 0.4s ease;
+}
+
+.timeline-item:hover {
+    transform: translateX(-15px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.timeline-item h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-item p {
+    font-size: 1.2rem;
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Education Section */
+.education {
+    align-items: flex-start;
+}
+
+.edu-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 4rem;
+    border-radius: 20px;
+    max-width: 800px;
+}
+
+.edu-card h3 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.edu-card p {
+    font-size: 1.5rem;
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+/* Contact Section */
+.contact {
+    align-items: center;
+    text-align: center;
+    min-height: 80vh; /* slightly shorter at the end */
+}
+
+.email-link {
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-weight: 500;
+    color: var(--text-color);
+    text-decoration: none;
+    position: relative;
+    padding: 1rem 0;
+    display: inline-block;
+}
+
+.email-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--text-color);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.email-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .slide-section {
+        padding: 0 5%;
+    }
+    .experience {
+        align-items: flex-start;
+        text-align: left;
+    }
+    .timeline {
+        max-width: 100%;
+    }
+    .timeline-item:hover {
+        transform: translateX(10px);
+    }
+}
